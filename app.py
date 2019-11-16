@@ -8,4 +8,4 @@ def hello():
     print("Content-type: text/html")
     print()
     print("<h1>Hello world!</h1>")
-    return "Hello World!"
+    return "Hello my World!"
