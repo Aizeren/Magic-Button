@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    print("Content-type: text/html")
-    print()
-    print("<h1>Hello world!</h1>")
-    return "Hello my World!"
+def main():
+    return render_template('index.html')
+
+if __name__ == "__main__":
+    app.run()
