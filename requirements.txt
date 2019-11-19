@@ -11,3 +11,4 @@ msrestazure
 azure
 azure-storage
 azure-mgmt-automation
+ansible[azure]
