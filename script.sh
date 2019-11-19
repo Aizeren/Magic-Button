@@ -1,2 +1,3 @@
-echo "hi"
-ansible-playbook test.yml
+#pip install ansible
+#ansible-playbook test.yml
+echo "hu"
