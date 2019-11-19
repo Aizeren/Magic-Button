@@ -7,7 +7,7 @@ def main():
 	return render_template('index.html')
 @app.route('/process_data/', methods=['POST'])
 def script():
-	subprocess.call("sh ./script.sh", shell = True)
+	subprocess.call("sh ./script.sh")
 	a = request.form['a']
 	b = request.form['b']
 	return str(float(a)+float(b))
