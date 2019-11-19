@@ -4,3 +4,10 @@ itsdangerous==0.24
 Jinja2>=2.10.1
 MarkupSafe==1.0
 werkzeug>=0.15.3
+ansible
+packaging
+msrest
+msrestazure
+azure
+azure-storage
+azure-mgmt-automation
