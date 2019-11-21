@@ -7,7 +7,7 @@ def main():
 	return render_template('index.html')
 @app.route('/process_data/', methods=['POST'])
 def script():
-	return str(subprocess.call("sh ./scripts/process_data.sh", shell = True))
+	return str(subprocess.call("sh ./process_data.sh", shell = True))
 
 if __name__ == "__main__":
 	app.run()
