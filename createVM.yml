@@ -50,8 +50,8 @@
       resource_group: magicButtonResourceGroup
       name: magicButtonVM
       vm_size: Standard_B1ls
-      admin_username: panda
-      admin_password: superior0@mail.ru
+      admin_username: "{{ lookup('env','admin_username') }}"
+      admin_password: "{{ lookup('env','admin_password') }}"
       network_interfaces: myNIC
       image:
         offer: UbuntuServer
