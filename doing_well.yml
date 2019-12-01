@@ -1,0 +1,11 @@
+- hosts: localhost
+
+  tasks:
+  - name: Doing well
+    doing_well: 
+      a: "{{a}}"
+      b: "{{b}}"
+    register: result
+  - debug: var="{{result.meta}}"
+  - name: Save result to a file
+    local_action: copy content="{{ result.meta }}" dest=./results/test.txt
