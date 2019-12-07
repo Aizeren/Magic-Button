@@ -1,0 +1,5 @@
+- hosts: vm
+  tasks:
+  - name: Run a script installing requiered packs on VM
+    script: ./VmStart.sh
+
