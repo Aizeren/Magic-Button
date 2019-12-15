@@ -22,4 +22,4 @@ sudo python3 -m pip install --user azure-servicebus==0.21.0
 sudo python3 -m pip install azure
 sudo python3 -m pip install azure-common
 touch data.txt
-export ANSIBLE_HOST_KEY_CHECKING=False">VmStart.sh
+export ANSIBLE_HOST_KEY_CHECKING=False">./scripts/VmStart.sh
