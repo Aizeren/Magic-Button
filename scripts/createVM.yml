@@ -51,7 +51,7 @@
     azure_rm_virtualmachine:
       resource_group: magicButtonResourceGroup
       name: magicButtonVM
-      vm_size: Standard_B1ms
+      vm_size: Standard_B2s
       admin_username: "{{ lookup('env','admin_username') }}"
       admin_password: "{{ lookup('env','admin_password') }}"
       network_interfaces: myNIC
