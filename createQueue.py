@@ -1,7 +1,8 @@
 import sys
-from azure.servicebus import ServiceBusClient
+import os
+from azure.servicebus import ServiceBusService
 
 queueName = sys.argv[1]
+sbs = ServiceBusService("magicButtonMB", shared_access_key_name="RootManageSharedAccessKey", shared_access_key_value="SNZewWOTdOkaVShECrp+OCKmSFqW5JCEjEM52slp5TM=")
 
-sb_client = ServiceBusClient.from_connection_string('Endpoint=sb://magicbuttonmb.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SNZewWOTdOkaVShECrp+OCKmSFqW5JCEjEM52slp5TM=')
-sb_client.create_queue(queueName)
+sbs.create_queue(queueName)
