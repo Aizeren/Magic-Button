@@ -18,7 +18,7 @@ def process_data():
 	b = request.form["b"]
 
 	#create virtual machine
-	os.system("ansible-playbook createVM.yml")
+	os.system("ansible-playbook ./scripts/createVM.yml")
 
 	#read VM piblic IP 
 	tmpFile = open("./results/VMIP.txt", "r")
@@ -30,27 +30,27 @@ def process_data():
 	os.system("echo \"vm ansible_host="+nodeIP+" ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">/etc/ansible/hosts")
 	
 	#install requiered packages
-	os.system("ansible-playbook installPacksOnVM.yml")
+	os.system("ansible-playbook ./scripts/installPacksOnVM.yml")
 
 	#send requiered files to remote node
-	os.system("ansible-playbook sendFilesToVM.yml")
+	os.system("ansible-playbook ./scripts/sendFilesToVM.yml")
 
 	#create queues
 	fromAppToVmQueueName = "fromAppToVmQueue"
-	os.system("python3 createQueue.py "+fromAppToVmQueueName)
-	fromVMToAppQueueName = "fromVmToVmQueue"
-	os.system("python3 createQueue.py "+fromVMToAppQueueName)
+	os.system("python3 ./scripts/createQueue.py "+fromAppToVmQueueName)
+	fromVMToAppQueueName = "fromVmToAppQueue"
+	os.system("python3 ./scripts/createQueue.py "+fromVMToAppQueueName)
 
 	#send message to service bus
-	os.system("python3 sendMsg.py "+fromAppToVmQueueName+" "+a+" "+b)
+	os.system("python3 ./scripts/sendMsg.py "+fromAppToVmQueueName+" "+a+" "+b)
 
 	#run start.py script on vm
-	os.system("ansible-playbook startCalc.yml")
+	os.system("ansible-playbook ./scripts/startCalc.yml")
 
 	#wait for answer message from service bus
 	tmpFile = open("./results/result.txt", "r")
 	while (tmpFile.read() == ""):
-		os.system("python3 receiveMsg.py "+fromVMToAppQueueName)
+		os.system("python3 ./scripts/receiveMsg.py "+fromVMToAppQueueName)
 	tmpFile.close()
 	
 	tmpFile = open("./results/result.txt", "r")
@@ -58,6 +58,8 @@ def process_data():
 	tmpFile.close()
 	#clear file
 	open('./results/result.txt', 'w').close()
+
+	os.system("ansible-playbook ./scripts/removeVm.yml")
 	
 	return render_template('result.html', res = result)
 

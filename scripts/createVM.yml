@@ -59,4 +59,4 @@
         sku: "18.04-LTS"
         version: latest
   - name: Write IP in file
-    local_action: copy content="{{ output_ip_address.state.ip_address }}" dest=./results/VMIP.txt
+    local_action: copy content="{{ output_ip_address.state.ip_address }}" dest=../results/VMIP.txt

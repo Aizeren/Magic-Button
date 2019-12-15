@@ -2,13 +2,13 @@
   tasks:
   - name: Ansible copy receive.py file to remote server
     copy:
-      src: ./resource/receive.py
+      src: ../resource/receive.py
       dest: ~/
   - name: Ansible copy start.py file to remote server
     copy:
-      src: ./resource/start.py
+      src: ../resource/start.py
       dest: ~/
   - name: Ansible copy send.py file to remote server
     copy:
-      src: ./resource/send.py
+      src: ../resource/send.py
       dest: ~/

@@ -9,6 +9,6 @@ msg = (sbs.receive_queue_message(sys.argv[1], peek_lock=False)).body.decode("utf
 # Receive the message from the queue
 
         #save answer in file
-tmpFile = open("./results/result.txt", "w")
+tmpFile = open("../results/result.txt", "w")
 tmpFile.write(msg)
 tmpFile.close()
