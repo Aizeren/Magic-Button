@@ -27,7 +27,7 @@ def process_data():
 
 	#config hosts
 	os.system("mkdir /etc/ansible")
-	os.system("echo \" vm ansible_host="+nodeIP+" ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">>/etc/ansible/hosts")
+	os.system("echo \"vm ansible_host="+nodeIP+" ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">/etc/ansible/hosts")
 	
 	#install requiered packages
 	os.system("ansible-playbook installPacksOnVM.yml")
