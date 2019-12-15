@@ -1,18 +1,14 @@
 import os
 import sys
-from azure.servicebus import QueueClient, Message
+from azure.servicebus import ServiceBusService, Message
 
 # Create the QueueClient
-queue_client = QueueClient.from_connection_string("Endpoint=sb://magicbuttonmb.$servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SNZewWOTdOkaVShECrp+OCKmSFqW5JCEjEM52slp5TM=", sys.argv[1])
+sbs = ServiceBusService("magicButtonMB", shared_access_key_name="RootManageSharedAccessKey", shared_access_key_value="SNZewWOTdOkaVShECrp+OCKmSFqW5JCEjEM52slp5TM=")
 
 # Receive the message from the queue
-with queue_client.get_receiver() as queue_receiver:
-    messages = queue_receiver.fetch_next(timeout=3)
-    for message in messages:
-        args = message.split(" ")
-        res = args[0]+args[1]
-        tmpfile = open("./result.txt", "w")
-        tmpfile.write(res)
-        tmpfile.close()
-        os.system("ansible-playbook sendFilesToApp.yml")
-        message.complete()
+msg = (sbs.receive_queue_message(sys.argv[1], peek_lock=False)).body.decode("utf-8")
+
+#save answer in file
+tmpFile = open("./data.txt", "w")
+tmpFile.write(msg)
+tmpFile.close()

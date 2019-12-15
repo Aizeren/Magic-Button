@@ -1,6 +1,5 @@
 - hosts: vm
   tasks:
   - name: Run a script start.py on VM using an executable in a system path
-    script: ~/start.py
-    args:
-      executable: python3
+    script: ./runVm.sh
+        

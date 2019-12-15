@@ -51,10 +51,13 @@ def process_data():
 	tmpFile = open("./results/result.txt", "r")
 	while (tmpFile.read() == ""):
 		os.system("python3 receiveMsg.py "+fromVMToAppQueueName)
+	tmpFile.close()
+	
+	tmpFile = open("./results/result.txt", "r")
 	result = tmpFile.read()
 	tmpFile.close()
 	#clear file
-	open('file.txt', 'w').close()
+	open('./results/result.txt', 'w').close()
 	
 	return render_template('result.html', res = result)
 
