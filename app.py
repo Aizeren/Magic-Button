@@ -21,6 +21,8 @@ def createvm():
 	a = request.form["a"]
 	b = request.form["b"]
 
+	os.system("rm ~/.ssh/known_hosts")
+
 	#create virtual machine
 	os.system("ansible-playbook ./scripts/createVM.yml")
 
@@ -41,6 +43,14 @@ def createvm():
 def installpacks():
 	#install requiered packages
 	os.system("ansible-playbook ./scripts/installPacksOnVM.yml")
+
+	return redirect(url_for("installpacks2"))
+
+
+@app.route('/installpacks2/')
+def installpacks2():
+	#install requiered packages
+	os.system("ansible-playbook ./scripts/installPacksOnVM2.yml")
 
 	return redirect(url_for("runcalc"))
 
@@ -83,7 +93,7 @@ def runcalc():
 
 @app.route('/removevm/')
 def removevm():
-	os.system("ansible-playbook ./scripts/removeVm.yml")
+	#os.system("ansible-playbook ./scripts/removeVm.yml")
 	
 	return render_template('result.html', res = result)
 

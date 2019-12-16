@@ -1,4 +1,5 @@
-- hosts: vm
+- name: Copy files to VM
+  hosts: vm
   tasks:
   - name: Ansible copy receive.py file to remote server
     copy:

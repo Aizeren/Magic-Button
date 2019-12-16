@@ -1,4 +1,5 @@
-- hosts: vm
+- name: Start calculations
+  hosts: vm
   tasks:
   - name: Run a script start.py on VM using an executable in a system path
     script: ./runVm.sh
