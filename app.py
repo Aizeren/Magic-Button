@@ -93,7 +93,7 @@ def runcalc():
 
 @app.route('/removevm/')
 def removevm():
-	#os.system("ansible-playbook ./scripts/removeVm.yml")
+	os.system("ansible-playbook ./scripts/removeVm.yml")
 	
 	return render_template('result.html', res = result)
 
