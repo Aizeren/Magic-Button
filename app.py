@@ -34,8 +34,7 @@ def createvm():
 	#config hosts
 	os.system("mkdir /etc/ansible")
 	os.system("echo \"vm ansible_host="+nodeIP+" ansible_ssh_user=$admin_username ansible_ssh_pass=$admin_password \">/etc/ansible/hosts")
-	#os.system("echo \"vm ansible_host="+nodeIP+" ansible_ssh_user=panda ansible_ssh_pass=superior0@mail.ru \">/etc/ansible/hosts")
-
+	
 	return redirect(url_for("installpacks"))
 
 
@@ -84,10 +83,6 @@ def runcalc():
 	tmpFile.close()
 	#clear file
 	open('./results/result.txt', 'w').close()
-
-	tmpFile = open("./results/test.txt", "w")
-	tmpFile.write(result)
-	tmpFile.close()
 
 	return redirect(url_for("removevm"))
 
